@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1000" height="760" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .cls { fill: #f8f9fa; stroke: #343a40; stroke-width: 2px; }
+    .title { font: bold 16px sans-serif; fill: #212529; }
+    .text { font: 14px sans-serif; fill: #212529; }
+    .line { stroke: #495057; stroke-width: 2px; marker-end: url(#arrow); }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#495057" />
+    </marker>
+  </defs>
+
+  <!-- Entities -->
+  <rect x="50" y="40" width="220" height="120" class="cls" rx="10" ry="10" />
+  <text x="60" y="65" class="title">Book</text>
+  <text x="60" y="90" class="text">- title: String</text>
+  <text x="60" y="110" class="text">- author: String</text>
+  <text x="60" y="130" class="text">- isbn: String</text>
+  <text x="60" y="150" class="text">- publicationYear: int</text>
+
+  <rect x="320" y="40" width="220" height="120" class="cls" rx="10" ry="10" />
+  <text x="330" y="65" class="title">Patron</text>
+  <text x="330" y="90" class="text">- id: String</text>
+  <text x="330" y="110" class="text">- name: String</text>
+  <text x="330" y="130" class="text">- email: String</text>
+  <text x="330" y="150" class="text">- borrowHistory: List</text>
+
+  <rect x="590" y="40" width="220" height="120" class="cls" rx="10" ry="10" />
+  <text x="600" y="65" class="title">Reservation</text>
+  <text x="600" y="90" class="text">- reservationId: String</text>
+  <text x="600" y="110" class="text">- book: Book</text>
+  <text x="600" y="130" class="text">- patron: Patron</text>
+  <text x="600" y="150" class="text">- reservedDate: Date</text>
+  <text x="600" y="170" class="text">- status: String</text>
+
+  <rect x="320" y="190" width="220" height="120" class="cls" rx="10" ry="10" />
+  <text x="330" y="215" class="title">BorrowedBookRecord</text>
+  <text x="330" y="245" class="text">- recordId: String</text>
+  <text x="330" y="265" class="text">- book: Book</text>
+  <text x="330" y="285" class="text">- patron: Patron</text>
+  <text x="330" y="305" class="text">- checkoutDate: Date</text>
+  <text x="330" y="325" class="text">- dueDate: Date</text>
+
+  <!-- Services -->
+  <rect x="50" y="360" width="220" height="100" class="cls" rx="10" ry="10" />
+  <text x="60" y="385" class="title">BookService</text>
+  <text x="60" y="410" class="text">- addBook()</text>
+  <text x="60" y="430" class="text">- removeBook()</text>
+  <text x="60" y="450" class="text">- updateBook()</text>
+
+  <rect x="300" y="360" width="220" height="100" class="cls" rx="10" ry="10" />
+  <text x="310" y="385" class="title">InventoryService</text>
+  <text x="310" y="410" class="text">- listAvailableBooks()</text>
+  <text x="310" y="430" class="text">- listBorrowedBooks()</text>
+
+  <rect x="550" y="360" width="220" height="100" class="cls" rx="10" ry="10" />
+  <text x="560" y="385" class="title">LendingService</text>
+  <text x="560" y="410" class="text">- checkoutBook()</text>
+  <text x="560" y="430" class="text">- returnBook()</text>
+
+  <rect x="50" y="500" width="220" height="100" class="cls" rx="10" ry="10" />
+  <text x="60" y="525" class="title">PatronService</text>
+  <text x="60" y="550" class="text">- addPatron()</text>
+  <text x="60" y="570" class="text">- updatePatron()</text>
+
+  <rect x="300" y="500" width="220" height="100" class="cls" rx="10" ry="10" />
+  <text x="310" y="525" class="title">ReservationService</text>
+  <text x="310" y="550" class="text">- reserveBook()</text>
+  <text x="310" y="570" class="text">- notifyAvailable()</text>
+
+  <!-- Utils / Exceptions / Observers -->
+  <rect x="600" y="500" width="220" height="80" class="cls" rx="10" ry="10" />
+  <text x="610" y="525" class="title">DateUtil</text>
+  <text x="610" y="550" class="text">- parseDate()</text>
+  <text x="610" y="570" class="text">- formatDate()</text>
+
+  <rect x="600" y="610" width="220" height="80" class="cls" rx="10" ry="10" />
+  <text x="610" y="635" class="title">InputDataNotValidException</text>
+  <text x="610" y="660" class="text">- message</text>
+
+  <rect x="820" y="360" width="160" height="100" class="cls" rx="10" ry="10" />
+  <text x="830" y="385" class="title">BookObserver</text>
+  <text x="830" y="410" class="text">- update()</text>
+
+  <rect x="820" y="500" width="160" height="100" class="cls" rx="10" ry="10" />
+  <text x="830" y="525" class="title">PatronObserver</text>
+  <text x="830" y="550" class="text">- update()</text>
+
+  <!-- Relationships -->
+  <line x1="140" y1="160" x2="360" y2="190" class="line" />
+  <line x1="400" y1="160" x2="360" y2="190" class="line" />
+  <line x1="710" y1="160" x2="540" y2="190" class="line" />
+  <line x1="390" y1="310" x2="390" y2="360" class="line" />
+  <line x1="260" y1="360" x2="260" y2="460" class="line" />
+  <line x1="430" y1="360" x2="430" y2="460" class="line" />
+  <line x1="660" y1="360" x2="660" y2="460" class="line" />
+  <line x1="170" y1="380" x2="170" y2="470" class="line" />
+  <line x1="390" y1="470" x2="390" y2="500" class="line" />
+  <line x1="705" y1="410" x2="600" y2="530" class="line" />
+  <line x1="900" y1="410" x2="770" y2="470" class="line" />
+  <line x1="900" y1="560" x2="770" y2="580" class="line" />
+  <line x1="650" y1="620" x2="640" y2="560" class="line" />
+</svg>
